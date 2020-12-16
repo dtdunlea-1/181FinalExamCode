@@ -43,20 +43,25 @@ public class Loan {
 	}
 
 	public double GetPMT() {
-		double PMT = 0;
-		//TODO: Execute PMT function to determine payment with given rate, nbr of payments, PV, FV, compounding)
-		return PMT;
+		//TODO: --DONE-- Execute PMT function to determine payment with given rate, nbr of payments, PV, FV, compounding)
+		return Math.abs(FinanceLib.pmt(this.InterestRate, this.LoanPaymentCnt, this.LoanAmount, this.LoanBalanceEnd, this.bCompoundingOption));
 	}
 
 	public double getTotalPayments() {
-		//TODO: Return the total payments for the loan
-		double tot = 0;
-		return tot;
+		//TODO: --DONE-- Return the total payments for the loan
+		double totalPayment = 0;
+		for (Payment payment : this.loanPayments) {
+			totalPayment += payment.getPayment();
+		}
+		return totalPayment;
 	}
 
 	public double getTotalInterest() {
-		//TODO: Return the total interest for the loan
+		//TODO: --DONE-- Return the total interest for the loan
 		double interest = 0;
+		for (Payment payment : this.loanPayments) {
+			interest += payment.getInterestPayment();
+		}
 		return interest;
 	}
 
